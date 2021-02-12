@@ -5,10 +5,13 @@
  */
 package pizzeria.repository;
 
+import java.util.List;
+import pizzeria.entity.Payment;
+
 /**
  *
  * @author alkinoos
  */
-public class PaymentRepo {
-    
+public interface PaymentRepo {
+    List<Payment> findAll();
 }

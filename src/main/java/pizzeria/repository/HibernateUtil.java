@@ -8,7 +8,6 @@ package pizzeria.repository;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,22 +22,13 @@ public class HibernateUtil<E> {
     private Session session;
 
     protected Session getSession() {
-        session = sessionFactory.getCurrentSession();
-        return session;
+        return sessionFactory.getCurrentSession();
     }
 
-    //Methods for CRUD operations
-    protected List<E> findAll(String query) {
-        session = getSession();
-        Query myQuery = session.createNamedQuery(query);  //NAMED QUERY APO TO ENTITY edo mesa
-        List<E> list = myQuery.getResultList();
+    protected List<E> findAll(String namedQuery) {
+        Query query = getSession().createNamedQuery(namedQuery);
+        List<E> list = query.getResultList();
         return list;
-    }
-
-    protected E save(E entity) {
-        session = getSession();
-        session.saveOrUpdate(entity);
-        return entity;
     }
 
     protected E find(Class<E> type, int id) {
@@ -47,18 +37,6 @@ public class HibernateUtil<E> {
         return e;
     }
 
-    public void delete(Class<E> type, int id) {
-        session = getSession();
-        E e = session.find(type, id);
-        session.remove(e);
-    }
     
-//    TODO generic findByFk
-//    protected List<E> findByFk(String query,int id){
-//        session = getSession();
-//        Query myquery = session.createNamedQuery(query);
-//        myquery.setParameter("scode", id);
-//        List<E> list = myquery.getResultList();
-//        return list;
-//    }
+
 }

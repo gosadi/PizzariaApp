@@ -15,27 +15,33 @@
     </head>
     <body>
         <h1><b>Choose your Pizza</b></h1>
-        <form:form action="${pageContext.request.contextPath}/order/pizza" method="POST" modelAttribute="paraggelia">
+        <form:form action="${pageContext.request.contextPath}/orders/pizza" method="POST" modelAttribute="paraggelia">
             <p>Choose bread size:</p>
-            <form:radiobutton id="large" path="size" value="large"/>
+            <%--<form:radiobutton id="large" path="size" value="large"/>--%>
+            <form:radiobutton id="large" path="paraggelia.pizzaId.sizeId" value="Large" />
             <label for="large">Large</label>
             <br>
-            <form:radiobutton id="medium" path="size" value="medium"/>
+            <%--<form:radiobutton id="medium" path="size" value="medium"/>--%>
+            <form:radiobutton id="medium" path="paraggelia.pizzaId.sizeId" value="Medium"/>
             <label for="medium">Medium</label>
             <br>
-            <form:radiobutton id="small" path="size" value="small"/>
+            <%--<form:radiobutton id="small" path="size" value="small"/>--%>
+            <form:radiobutton id="small" path="paraggelia.pizzaId.sizeId" value="Small"/>
             <label for="small">Small</label>
             <br>
             <br>
             <br>
             <p>Choose Ingredients:</p>
-            <form:checkbox id="potatoes" path="ingredients" value="potatoes"/>
+            <%--<form:checkbox id="potatoes" path="ingredients" value="potatoes"/>--%>
+            <form:checkbox id="potatoes" path="paraggelia.pizzaId.ingredientList" value="potatoes"/>
             <label for="potatoes">Potatoes</label>
             <br>
-            <form:checkbox id="tomatoes" path="ingredients" value="tomatoes"/>
+            <%--<form:checkbox id="tomatoes" path="ingredients" value="tomatoes"/>--%>
+            <form:checkbox id="tomatoes" path="paraggelia.pizzaId.ingredientList" value="tomatoes"/>
             <label for="tomatoes">Tomatoes</label>
             <br>
-            <form:checkbox id="sausage" path="ingredients" value="sausage"/>
+            <%--<form:checkbox id="sausage" path="ingredients" value="sausage"/>--%>
+            <form:checkbox id="sausage" path="paraggelia.pizzaId.ingredientList" value="sausage"/>
             <label for="sausage">Sausage</label>
             <br>
             <br>

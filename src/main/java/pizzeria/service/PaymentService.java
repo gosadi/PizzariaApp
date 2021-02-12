@@ -5,10 +5,17 @@
  */
 package pizzeria.service;
 
+import java.util.List;
+import pizzeria.entity.Payment;
+
+
+
 /**
  *
  * @author alkinoos
  */
-public class PaymentService {
+
+public interface PaymentService {
     
+    List<Payment> findAll();
 }

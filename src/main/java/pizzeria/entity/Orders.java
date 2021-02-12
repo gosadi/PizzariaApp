@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -32,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o")
     , @NamedQuery(name = "Orders.findById", query = "SELECT o FROM Orders o WHERE o.id = :id")
-    , @NamedQuery(name = "Orders.findByOrderLocalDate", query = "SELECT o FROM Orders o WHERE o.orderLocalDate = :orderLocalDate")})
+    , @NamedQuery(name = "Orders.findByOrderDate", query = "SELECT o FROM Orders o WHERE o.orderDate = :orderDate")})
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,16 +44,17 @@ public class Orders implements Serializable {
     private Integer id;
     @Column(name = "order_date")
     @Temporal(TemporalType.DATE)
-    private LocalDate orderLocalDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate orderDate;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne
-    private Customer customerId;
+    private Customer customer;
     @JoinColumn(name = "payment_id", referencedColumnName = "id")
     @ManyToOne
-    private Payment paymentId;
+    private Payment payment;
     @JoinColumn(name = "pizza_id", referencedColumnName = "id")
     @ManyToOne
-    private Pizza pizzaId;
+    private Pizza pizza;
 
     public Orders() {
     }
@@ -69,36 +71,36 @@ public class Orders implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getOrderLocalDate() {
-        return orderLocalDate;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrderLocalDate(LocalDate orderLocalDate) {
-        this.orderLocalDate = orderLocalDate;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Payment getPaymentId() {
-        return paymentId;
+    public Payment getPayment() {
+        return payment;
     }
 
-    public void setPaymentId(Payment paymentId) {
-        this.paymentId = paymentId;
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
-    public Pizza getPizzaId() {
-        return pizzaId;
+    public Pizza getPizza() {
+        return pizza;
     }
 
-    public void setPizzaId(Pizza pizzaId) {
-        this.pizzaId = pizzaId;
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 
     @Override

@@ -5,10 +5,16 @@
  */
 package pizzeria.service;
 
+import java.util.List;
+import pizzeria.entity.Sizes;
+
+
 /**
  *
  * @author alkinoos
  */
-public class SizesService {
+
+public interface SizesService {
     
+    List<Sizes> findAll();
 }
