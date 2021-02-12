@@ -8,12 +8,6 @@ package pizzeria.service;
 import java.util.List;
 import pizzeria.entity.Sizes;
 
-
-/**
- *
- * @author alkinoos
- */
-
 public interface SizesService {
     
     List<Sizes> findAll();

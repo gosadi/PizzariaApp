@@ -8,10 +8,7 @@ package pizzeria.repository;
 import java.util.List;
 import pizzeria.entity.Ingredient;
 
-/**
- *
- * @author alkinoos
- */
+
 public interface IngredientRepo {
     List<Ingredient> findAll();
 }

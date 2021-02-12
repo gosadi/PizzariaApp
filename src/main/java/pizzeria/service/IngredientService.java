@@ -8,13 +8,6 @@ package pizzeria.service;
 import java.util.List;
 import pizzeria.entity.Ingredient;
 
-
-
-/**
- *
- * @author alkinoos
- */
-
 public interface IngredientService {
     
     List<Ingredient> findAll();

@@ -8,13 +8,6 @@ package pizzeria.service;
 import java.util.List;
 import pizzeria.entity.Payment;
 
-
-
-/**
- *
- * @author alkinoos
- */
-
 public interface PaymentService {
     
     List<Payment> findAll();

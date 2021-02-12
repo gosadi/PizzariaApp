@@ -8,10 +8,7 @@ package pizzeria.repository;
 import java.util.List;
 import pizzeria.entity.Sizes;
 
-/**
- *
- * @author alkinoos
- */
+
 //SOLID PRINCIPLE KANONES GIA AUTA
 public interface SizesRepo {
     List<Sizes> findAll();

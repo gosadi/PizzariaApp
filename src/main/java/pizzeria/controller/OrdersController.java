@@ -13,17 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pizzeria.entity.Ingredient;
-import pizzeria.entity.Orders;
 import pizzeria.entity.Payment;
 import pizzeria.entity.Sizes;
 import pizzeria.service.IngredientService;
 import pizzeria.service.PaymentService;
 import pizzeria.service.SizesService;
 
-/**
- *
- * @author alkinoos
- */
+
 @Controller
 @RequestMapping("/orders")
 public class OrdersController {

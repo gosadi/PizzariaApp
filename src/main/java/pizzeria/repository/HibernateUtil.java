@@ -11,10 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- *
- * @author alkinoos
- */
+
 public class HibernateUtil<E> {
 
     @Autowired
