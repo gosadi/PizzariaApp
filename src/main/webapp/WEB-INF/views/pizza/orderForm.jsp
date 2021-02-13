@@ -16,53 +16,29 @@
     <body>
         <h1><b>Choose your Pizza</b></h1>
         <form:form action="${pageContext.request.contextPath}/orders/pizza" method="POST" modelAttribute="paraggelia">
-            <p>Choose bread size:</p>
-            <%--<form:radiobutton id="large" path="size" value="large"/>--%>
-            <form:radiobutton id="large" path="paraggelia.pizzaId.sizeId" value="Large" />
-            <label for="large">Large</label>
+            <p><strong>Choose bread size:</strong></p>
+            <form:radiobuttons path="pizza.size" items="${sizes}" itemLabel="sname" itemValue="id" element="li"/> <%-- --%>
+            <form:errors path="pizza.size"/>
             <br>
-            <%--<form:radiobutton id="medium" path="size" value="medium"/>--%>
-            <form:radiobutton id="medium" path="paraggelia.pizzaId.sizeId" value="Medium"/>
-            <label for="medium">Medium</label>
+            <p><strong>Choose Ingredients:</strong></p>
+            <c:forEach items="${ingredients}" var="ingredient">
+                <input type="checkbox" name="pizza.ingredients" value="${ingredient.id}">${ingredient.iname}<br>
+            </c:forEach>
+            <form:errors path="pizza.ingredients"/>
             <br>
-            <%--<form:radiobutton id="small" path="size" value="small"/>--%>
-            <form:radiobutton id="small" path="paraggelia.pizzaId.sizeId" value="Small"/>
-            <label for="small">Small</label>
+            <p><strong>Choose payment method:</strong></p>
+            <form:select  path="payment" items="${payments}" itemLabel="pname" itemValue="id"/>
+            <form:errors path="payment"/>
             <br>
+            <p><strong>Your details:</strong></p>
+            Name:<form:input path="customer.cname"/>
+            <form:errors path="customer.cname"/>
             <br>
+            Age:<form:input  type="number"  path = "customer.cage"/>
+            <form:errors path="customer.cage"/>
             <br>
-            <p>Choose Ingredients:</p>
-            <%--<form:checkbox id="potatoes" path="ingredients" value="potatoes"/>--%>
-            <form:checkbox id="potatoes" path="paraggelia.pizzaId.ingredientList" value="potatoes"/>
-            <label for="potatoes">Potatoes</label>
-            <br>
-            <%--<form:checkbox id="tomatoes" path="ingredients" value="tomatoes"/>--%>
-            <form:checkbox id="tomatoes" path="paraggelia.pizzaId.ingredientList" value="tomatoes"/>
-            <label for="tomatoes">Tomatoes</label>
-            <br>
-            <%--<form:checkbox id="sausage" path="ingredients" value="sausage"/>--%>
-            <form:checkbox id="sausage" path="paraggelia.pizzaId.ingredientList" value="sausage"/>
-            <label for="sausage">Sausage</label>
-            <br>
-            <br>
-            <br>
-            <p>Choose payment method:</p>
-            <form:select id="payment" path="paymentMethod">
-                <c:forEach items="${listOfPayments}" var="payment">
-                    <form:option value="${payment}">${payment}</form:option>
-                </c:forEach>
-            </form:select>
-            <br>
-            <br>
-            <h5>Your details:</h5>
-            <label for="inputName">Name:</label>
-            <form:input id="inputName" path="name"/>
-            <br>
-            <label for="inputAge">Age:</label>
-            <form:input  type="number"  id="inputAge" path = "age"/>
-            <br>
-            <label for="inputDate"></label>
-            <form:input type="date" id="inputDate" path="date"/>
+            Date of order:<form:input type="date" path="orderDate"/>
+            <form:errors path="orderDate"/>
             <br>
             <input type="submit" value="Submit">
         </form:form>

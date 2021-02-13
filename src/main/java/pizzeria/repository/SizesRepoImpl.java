@@ -17,5 +17,10 @@ public class SizesRepoImpl extends HibernateUtil<Sizes>implements SizesRepo{
     public List<Sizes> findAll() {
         return super.findAll("Sizes.findAll");
     }
+
+    @Override
+    public Sizes findById(int id) {
+        return super.findById("Sizes.findById",id);
+    }
     
 }

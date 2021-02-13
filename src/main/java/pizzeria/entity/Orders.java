@@ -18,15 +18,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- *
- * @author alkinoos
- */
+
 @Entity
 @Table(name = "orders")
 @XmlRootElement
@@ -43,7 +38,6 @@ public class Orders implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate orderDate;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")

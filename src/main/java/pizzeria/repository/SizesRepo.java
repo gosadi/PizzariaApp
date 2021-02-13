@@ -12,4 +12,6 @@ import pizzeria.entity.Sizes;
 //SOLID PRINCIPLE KANONES GIA AUTA
 public interface SizesRepo {
     List<Sizes> findAll();
+
+    public Sizes findById(int id);
 }

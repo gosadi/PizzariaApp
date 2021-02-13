@@ -42,13 +42,10 @@ public class Pizza implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    //onoma pinaka kai join columns gia ton pinaka MANY to MANY
     @JoinTable(name = "pizza_ingredients",
             joinColumns = {@JoinColumn(name = "pizza_id", referencedColumnName = "id")},//to proto id einai apo to entity pou vriskomaste opote to katalaveni
             inverseJoinColumns = {@JoinColumn(name = "ingredient_id", referencedColumnName = "id")})
-    //onoma pinaka kai join columns gia ton pinaka MANY to MANY
-//    @JoinTable(name = "pizza_ingredients", joinColumns = { 
-//        @JoinColumn(name = "pizza_id", referencedColumnName = "id")}, inverseJoinColumns = {
-//        @JoinColumn(name = "ingredient_id", referencedColumnName = "id")})
     @ManyToMany
     private List<Ingredient> ingredients;
     @JoinColumn(name = "size_id", referencedColumnName = "id")

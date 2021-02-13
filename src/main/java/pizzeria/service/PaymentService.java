@@ -11,4 +11,6 @@ import pizzeria.entity.Payment;
 public interface PaymentService {
     
     List<Payment> findAll();
+
+    public Payment findById(int id);
 }

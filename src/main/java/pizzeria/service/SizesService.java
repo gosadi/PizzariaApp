@@ -11,4 +11,6 @@ import pizzeria.entity.Sizes;
 public interface SizesService {
     
     List<Sizes> findAll();
+
+    public Sizes findById(int id);
 }

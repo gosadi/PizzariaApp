@@ -24,5 +24,10 @@ public class SizesServiceImpl implements SizesService {
     public List<Sizes> findAll() {
         return sizesRepo.findAll();
     }
+
+    @Override
+    public Sizes findById(int id) {
+        return sizesRepo.findById(id);
+    }
     
 }

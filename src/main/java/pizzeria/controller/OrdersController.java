@@ -6,13 +6,17 @@
 package pizzeria.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pizzeria.entity.Ingredient;
+import pizzeria.entity.Orders;
 import pizzeria.entity.Payment;
 import pizzeria.entity.Sizes;
 import pizzeria.service.IngredientService;
@@ -52,12 +56,22 @@ public class OrdersController {
     
     
     @GetMapping("/pizza")
-    public String showPizzaForm(){
+    public String showPizzaForm(@ModelAttribute("paraggelia")Orders order){
         return "pizza/orderForm";
     }
     
     @PostMapping("/pizza")
-    public String showOrder(){
-        return null;
+    public String showOrder(@ModelAttribute("paraggelia") @Valid Orders order,
+            BindingResult result){//binding result must come after the @Valid object
+        
+        if(result.hasErrors()){
+            List<ObjectError> errors = result.getAllErrors();
+            for(ObjectError e : errors){
+                System.out.println(">>>>>>>>>>>ERROR======="+e);
+            }
+            return "pizza/orderForm";
+        }
+        //save object in DB
+        return "pizza/showOrder";
     }
 }
