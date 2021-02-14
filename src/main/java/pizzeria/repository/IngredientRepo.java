@@ -11,4 +11,6 @@ import pizzeria.entity.Ingredient;
 
 public interface IngredientRepo {
     List<Ingredient> findAll();
+
+    public Ingredient findById(int id);
 }

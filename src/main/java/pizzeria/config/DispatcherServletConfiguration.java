@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import pizzeria.converter.StringToIngredientConverter;
 import pizzeria.converter.StringToPaymentConverter;
 import pizzeria.converter.StringToSizeConverter;
 
@@ -31,6 +32,8 @@ public class DispatcherServletConfiguration implements WebMvcConfigurer{
     private StringToSizeConverter stringToSizeConverter;
     @Autowired
     private StringToPaymentConverter stringToPaymentConverter;
+    @Autowired
+    private StringToIngredientConverter stringToIngredientConverter;
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -49,7 +52,7 @@ public class DispatcherServletConfiguration implements WebMvcConfigurer{
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(stringToSizeConverter);
         registry.addConverter(stringToPaymentConverter);
-        
+        registry.addConverter(stringToSizeConverter);
     }
     
     
