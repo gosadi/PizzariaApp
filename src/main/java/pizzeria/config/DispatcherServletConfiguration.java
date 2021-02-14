@@ -52,7 +52,7 @@ public class DispatcherServletConfiguration implements WebMvcConfigurer{
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(stringToSizeConverter);
         registry.addConverter(stringToPaymentConverter);
-        registry.addConverter(stringToSizeConverter);
+        registry.addConverter(stringToIngredientConverter);
     }
     
     
