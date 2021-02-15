@@ -6,6 +6,7 @@
 package pizzeria.repository;
 
 import java.util.List;
+import java.util.Map;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -16,7 +17,6 @@ public class HibernateUtil<E> {
 
     @Autowired
     private SessionFactory sessionFactory;
-    private Session session;
 
     protected Session getSession() {
         return sessionFactory.getCurrentSession();
@@ -28,13 +28,22 @@ public class HibernateUtil<E> {
         return list;
     }
 
-    protected E findById(String namedQuery,int id) {
+    protected E findById(String namedQuery, String parameterKey, int parameterValue) {
         Query query = getSession().createNamedQuery(namedQuery);
-        query.setParameter("id", id);
+        query.setParameter(parameterKey, parameterValue);
         E e = (E) query.getSingleResult();
         return e;
     }
 
-    
+    protected void save(E e){
+        getSession().saveOrUpdate(e);
+        
+    }
+//    na to kanoume me MAP
+//    protected List<E> findByNamedQueryDynamic(String namedQuery, Map<String,Object> parameters){
+//        for(Entry e : parameters){
+//            query.setParameter(e.key,e.value);
+//        }
+//    }
 
 }

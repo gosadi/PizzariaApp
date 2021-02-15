@@ -20,6 +20,7 @@ import pizzeria.entity.Orders;
 import pizzeria.entity.Payment;
 import pizzeria.entity.Sizes;
 import pizzeria.service.IngredientService;
+import pizzeria.service.OrdersService;
 import pizzeria.service.PaymentService;
 import pizzeria.service.SizesService;
 
@@ -37,6 +38,8 @@ public class OrdersController {
     //3)gia na fero ta payments apo to service
     @Autowired
     PaymentService paymentService;
+    @Autowired
+    OrdersService ordersService;
     
     //1)
     @ModelAttribute("sizes")
@@ -72,6 +75,7 @@ public class OrdersController {
             return "pizza/orderForm";
         }
         //save object in DB
+        ordersService.save(order);
         return "pizza/showOrder";
     }
 }

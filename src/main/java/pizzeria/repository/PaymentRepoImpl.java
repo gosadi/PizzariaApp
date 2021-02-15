@@ -19,7 +19,7 @@ public class PaymentRepoImpl extends HibernateUtil<Payment>implements PaymentRep
 
     @Override
     public Payment findById(int id) {
-        return super.findById("Payment.findById", id);
+        return super.findById("Payment.findById", "id", id);
     }
     
 }

@@ -18,21 +18,16 @@ import pizzeria.service.IngredientService;
  * @author alkinoos
  */
 @Component
-public class StringToIngredientConverter implements Converter <List<String>, List<Ingredient>>{
+public class StringToIngredientConverter implements Converter <String , Ingredient>{
     
     @Autowired
     IngredientService service;
 
     @Override
-    public List<Ingredient> convert(List<String> source) {
-        List<Ingredient> ingrId = new ArrayList();
-        for(String ingr : source){
-         int id = Integer.parseInt(ingr);
+    public Ingredient convert(String s) {
+         int id = Integer.parseInt(s);
          Ingredient ingredient = service.findById(id);
-         ingrId.add(ingredient);
-         
-        }
-        return ingrId;
+         return ingredient;
     }
 
     

@@ -20,7 +20,7 @@ public class SizesRepoImpl extends HibernateUtil<Sizes>implements SizesRepo{
 
     @Override
     public Sizes findById(int id) {
-        return super.findById("Sizes.findById",id);
+        return super.findById("Sizes.findById","id",id);
     }
     
 }

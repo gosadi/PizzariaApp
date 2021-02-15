@@ -19,7 +19,9 @@ public class IngredientRepoImpl extends HibernateUtil<Ingredient>implements Ingr
 
     @Override
     public Ingredient findById(int id) {
-        return super.findById("Ingredient.findById", id);
+        return super.findById("Ingredient.findById","id", id);
     }
+    
+    
     
 }
